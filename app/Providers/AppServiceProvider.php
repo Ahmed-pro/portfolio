@@ -10,15 +10,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-
-    public function boot(): void
-{
-    if (config('app.env') === 'production') {
-        URL::forceScheme('https');
-    }
-}
-
-
     public function register(): void
     {
         //
@@ -29,7 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
-    
 }
